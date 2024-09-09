@@ -413,17 +413,17 @@ head2 = tk.Label(frame2,
                  text=f"                       " +
                       f"For New Registrations" +
                       f"                       ",
-                 fg="black", bg="#3ece48", font=('times', 17, ' bold ') )
+                 fg="black", bg="#3ece48", font=('times', 17, ' bold '))
 head2.grid(row=0, column=0)
 
 head1 = tk.Label(frame1, text=f"                       " +
                               f"For Already Registered" +
                               f"                       ", fg="black",
-                 bg="#3ece48", font=('times', 17, ' bold ') )
+                 bg="#3ece48", font=('times', 17, ' bold '))
 head1.place(x=0, y=0)
 
 lbl = tk.Label(frame2, text="Enter ID", width=20, height=1, fg="black",
-               bg="#00aeff", font=('times', 17, ' bold ') )
+               bg="#00aeff", font=('times', 17, ' bold '))
 lbl.place(x=80, y=55)
 
 txt = tk.Entry(frame2, width=32, fg="black", font=('times', 15, ' bold '))
@@ -433,7 +433,7 @@ lbl2 = tk.Label(frame2, text="Enter Name", width=20, fg="black",
                 bg="#00aeff", font=('times', 17, ' bold '))
 lbl2.place(x=80, y=140)
 
-txt2 = tk.Entry(frame2, width=32, fg="black", font=('times', 15, ' bold ')  )
+txt2 = tk.Entry(frame2, width=32, fg="black", font=('times', 15, ' bold '))
 txt2.place(x=30, y=173)
 
 message1 = tk.Label(frame2, text="1)Take Images  >>>  2)Save Profile",
