@@ -42,9 +42,9 @@ def check_haarcascadefile():
 
 def save_pass():
     assure_path_exists("TrainingImageLabel/")
-    exists1 = os.path.isfile("TrainingImageLabel\psd.txt")
+    exists1 = os.path.isfile("TrainingImageLabel\\psd.txt")
     if exists1:
-        tf = open("TrainingImageLabel\psd.txt", "r")
+        tf = open("TrainingImageLabel\\psd.txt", "r")
         key = tf.read()
     else:
         master.destroy()
@@ -54,7 +54,7 @@ def save_pass():
             mess._show(title='No Password Entered',
                        message='Password not set!! Please try again')
         else:
-            tf = open("TrainingImageLabel\psd.txt", "w")
+            tf = open("TrainingImageLabel\\psd.txt", "w")
             tf.write(new_pas)
             mess._show(title='Password Registered',
                        message='New password was registered successfully!!')
@@ -64,7 +64,7 @@ def save_pass():
     nnewp = (nnew.get())
     if (op == key):
         if(newp == nnewp):
-            txf = open("TrainingImageLabel\psd.txt", "w")
+            txf = open("TrainingImageLabel\\psd.txt", "w")
             txf.write(newp)
         else:
             mess._show(title='Error', message='Confirm new password again!!!')
@@ -119,9 +119,9 @@ def change_pass():
 
 def psw():
     assure_path_exists("TrainingImageLabel/")
-    exists1 = os.path.isfile("TrainingImageLabel\psd.txt")
+    exists1 = os.path.isfile("TrainingImageLabel\\psd.txt")
     if exists1:
-        tf = open("TrainingImageLabel\psd.txt", "r")
+        tf = open("TrainingImageLabel\\psd.txt", "r")
         key = tf.read()
     else:
         new_pas = tsd.askstring('Old Password not found',
@@ -130,7 +130,7 @@ def psw():
             mess._show(title='No Password Entered',
                        message='Password not set!! Please try again')
         else:
-            tf = open("TrainingImageLabel\psd.txt", "w")
+            tf = open("TrainingImageLabel\\psd.txt", "w")
             tf.write(new_pas)
             mess._show(title='Password Registered',
                        message='New password was registered successfully!!')
@@ -163,16 +163,16 @@ def TakeImages():
     assure_path_exists("StudentDetails/")
     assure_path_exists("TrainingImage/")
     serial = 0
-    exists = os.path.isfile("StudentDetails\StudentDetails.csv")
+    exists = os.path.isfile("StudentDetails\\StudentDetails.csv")
     if exists:
-        with open("StudentDetails\StudentDetails.csv", 'r') as csvFile1:
+        with open("StudentDetails\\StudentDetails.csv", 'r') as csvFile1:
             reader1 = csv.reader(csvFile1)
             for l in reader1:
                 serial = serial + 1
         serial = (serial // 2)
         csvFile1.close()
     else:
-        with open("StudentDetails\StudentDetails.csv", 'a+') as csvFile1:
+        with open("StudentDetails\\StudentDetails.csv", 'a+') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(columns)
             serial = 1
@@ -193,7 +193,7 @@ def TakeImages():
                 # incrementing sample number
                 sampleNum = sampleNum + 1
                 # saving the captured face in the dataset folder TrainingImage
-                cv2.imwrite("TrainingImage\ " + name + "." + str(serial) +
+                cv2.imwrite("TrainingImage\\ " + name + "." + str(serial) +
                             "." + Id + '.' + str(sampleNum) + ".jpg",
                             gray[y:y + h, x:x + w])
                 # display the frame
@@ -208,7 +208,7 @@ def TakeImages():
         cv2.destroyAllWindows()
         res = "Images Taken for ID : " + Id
         row = [serial, '', Id, '', name]
-        with open('StudentDetails\StudentDetails.csv', 'a+') as csvFile:
+        with open('StudentDetails\\StudentDetails.csv', 'a+') as csvFile:
             writer = csv.writer(csvFile)
             writer.writerow(row)
         csvFile.close()
@@ -232,7 +232,7 @@ def TrainImages():
         mess._show(title='No Registrations',
                    message='Please Register someone first!!!')
         return
-    recognizer.save("TrainingImageLabel\Trainner.yml")
+    recognizer.save("TrainingImageLabel\\Trainner.yml")
     res = "Profile Saved Successfully"
     message1.configure(text=res)
     message.configure(text='Total Registrations till now  : ' + str(ID[0]))
@@ -271,9 +271,9 @@ def TrackImages():
     j = 0
     # cv2.createLBPHFaceRecognizer()
     recognizer = cv2.face.LBPHFaceRecognizer_create()
-    exists3 = os.path.isfile("TrainingImageLabel\Trainner.yml")
+    exists3 = os.path.isfile("TrainingImageLabel\\Trainner.yml")
     if exists3:
-        recognizer.read("TrainingImageLabel\Trainner.yml")
+        recognizer.read("TrainingImageLabel\\Trainner.yml")
     else:
         mess._show(title='Data Missing',
                    message='Please click on Save Profile to reset data!!')
@@ -284,9 +284,9 @@ def TrackImages():
     cam = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX
     col_names = ['Id', '', 'Name', '', 'Date', '', 'Time']
-    exists1 = os.path.isfile("StudentDetails\StudentDetails.csv")
+    exists1 = os.path.isfile("StudentDetails\\StudentDetails.csv")
     if exists1:
-        df = pd.read_csv("StudentDetails\StudentDetails.csv")
+        df = pd.read_csv("StudentDetails\\StudentDetails.csv")
     else:
         mess._show(title='Details Missing',
                    message='Students details are missing, please check!')
@@ -324,19 +324,19 @@ def TrackImages():
             break
     ts = time.time()
     date = datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
-    exists = os.path.isfile("Attendance\Attendance_" + date + ".csv")
+    exists = os.path.isfile("Attendance\\Attendance_" + date + ".csv")
     if exists:
-        with open("Attendance\Attendance_" + date + ".csv", 'a+') as csvFile1:
+        with open("Attendance\\Attendance_" + date + ".csv", 'a+') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(attendance)
         csvFile1.close()
     else:
-        with open("Attendance\Attendance_" + date + ".csv", 'a+') as csvFile1:
+        with open("Attendance\\Attendance_" + date + ".csv", 'a+') as csvFile1:
             writer = csv.writer(csvFile1)
             writer.writerow(col_names)
             writer.writerow(attendance)
         csvFile1.close()
-    with open("Attendance\Attendance_" + date + ".csv", 'r') as csvFile1:
+    with open("Attendance\\Attendance_" + date + ".csv", 'r') as csvFile1:
         reader1 = csv.reader(csvFile1)
         for lines in reader1:
             i = i + 1
@@ -451,9 +451,9 @@ lbl3 = tk.Label(frame1, text="Attendance", width=20, fg="black",
 lbl3.place(x=100, y=115)
 
 res=0
-exists = os.path.isfile("StudentDetails\StudentDetails.csv")
+exists = os.path.isfile("StudentDetails\\StudentDetails.csv")
 if exists:
-    with open("StudentDetails\StudentDetails.csv", 'r') as csvFile1:
+    with open("StudentDetails\\StudentDetails.csv", 'r') as csvFile1:
         reader1 = csv.reader(csvFile1)
         for l in reader1:
             res = res + 1
