@@ -60,7 +60,7 @@ def save_pass():
                        message='New password was registered successfully!!')
             return
     op = (old.get())
-    newp= (new.get())
+    newp = (new.get())
     nnewp = (nnew.get())
     if (op == key):
         if(newp == nnewp):
@@ -89,7 +89,7 @@ def change_pass():
                     font=('times', 12, ' bold '))
     lbl4.place(x=10, y=10)
     global old
-    old=tk.Entry(master, width=25, fg="black", relief='solid',
+    old = tk.Entry(master, width=25, fg="black", relief='solid',
                  font=('times', 12, ' bold '), show='*')
     old.place(x=180, y=10)
     lbl5 = tk.Label(master, text='   Enter New Password',
@@ -107,11 +107,11 @@ def change_pass():
                     font=('times', 12, ' bold '), show='*')
     nnew.place(x=180, y=80)
     cancel=tk.Button(master, text="Cancel", command=master.destroy, fg="black",
-                     bg="red", height=1, width=25, activebackground = "white",
+                     bg="red", height=1, width=25, activebackground="white",
                      font=('times', 10, ' bold '))
     cancel.place(x=200, y=120)
     save1 = tk.Button(master, text="Save", command=save_pass, fg="black",
-                      bg="#3ece48", height = 1, width=25,
+                      bg="#3ece48", height=1, width=25,
                       activebackground="white", font=('times', 10, ' bold '))
     save1.place(x=10, y=120)
     master.mainloop()
@@ -279,7 +279,7 @@ def TrackImages():
                    message='Please click on Save Profile to reset data!!')
         return
     harcascadePath = "haarcascade_frontalface_default.xml"
-    faceCascade = cv2.CascadeClassifier(harcascadePath);
+    faceCascade = cv2.CascadeClassifier(harcascadePath)
 
     cam = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -474,7 +474,7 @@ menubar.add_cascade(label='Help', font=('times', 29, ' bold '), menu=filemenu)
 
 # TREEVIEW ATTENDANCE TABLE
 
-tv= ttk.Treeview(frame1, height =13, columns = ('name', 'date', 'time'))
+tv = ttk.Treeview(frame1, height=13, columns=('name', 'date', 'time'))
 tv.column('#0', width=82)
 tv.column('name', width=130)
 tv.column('date', width=133)
@@ -487,14 +487,14 @@ tv.heading('time', text='TIME')
 
 # SCROLLBAR
 
-scroll=ttk.Scrollbar(frame1, orient='vertical', command=tv.yview)
+scroll = ttk.Scrollbar(frame1, orient='vertical', command=tv.yview)
 scroll.grid(row=2, column=4, padx=(0, 100), pady=(150, 0), sticky='ns')
 tv.configure(yscrollcommand=scroll.set)
 
 # BUTTONS
 
 clearButton = tk.Button(frame2, text="Clear", command=clear, fg="black",
-                        bg="#ea2a2a", width=11, activebackground = "white",
+                        bg="#ea2a2a", width=11, activebackground="white",
                         font=('times', 11, ' bold '))
 clearButton.place(x=335, y=86)
 clearButton2 = tk.Button(frame2, text="Clear", command=clear2, fg="black",
@@ -512,7 +512,7 @@ trainImg.place(x=30, y=380)
 trackImg = tk.Button(frame1, text="Take Attendance", command=TrackImages,
                      fg="black", bg="yellow", width=35, height=1,
                      activebackground="white", font=('times', 15, ' bold '))
-trackImg.place(x=30,y=50)
+trackImg.place(x=30, y=50)
 quitWindow = tk.Button(frame1, text="Quit", command=window.destroy, fg="black",
                        bg="red", width=35, height=1, activebackground="white"
                        , font=('times', 15, ' bold '))
