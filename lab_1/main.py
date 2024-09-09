@@ -1,4 +1,3 @@
-############################################# IMPORTING ################################################
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as mess
@@ -11,26 +10,22 @@ import pandas as pd
 import datetime
 import time
 
-############################################# FUNCTIONS ################################################
 
 def assure_path_exists(path):
     dir = os.path.dirname(path)
     if not os.path.exists(dir):
         os.makedirs(dir)
 
-##################################################################################
 
 def tick():
     time_string = time.strftime('%H:%M:%S')
     clock.config(text=time_string)
     clock.after(200,tick)
 
-###################################################################################
 
 def contact():
     mess._show(title='Contact us', message="Please contact us on : 'xxxxxxxxxxxxx@gmail.com' ")
 
-###################################################################################
 
 def check_haarcascadefile():
     exists = os.path.isfile("haarcascade_frontalface_default.xml")
@@ -40,7 +35,6 @@ def check_haarcascadefile():
         mess._show(title='Some file missing', message='Please contact us for help')
         window.destroy()
 
-###################################################################################
 
 def save_pass():
     assure_path_exists("TrainingImageLabel/")
@@ -74,7 +68,6 @@ def save_pass():
     mess._show(title='Password Changed', message='Password changed successfully!!')
     master.destroy()
 
-###################################################################################
 
 def change_pass():
     global master
@@ -104,7 +97,6 @@ def change_pass():
     save1.place(x=10, y=120)
     master.mainloop()
 
-#####################################################################################
 
 def psw():
     assure_path_exists("TrainingImageLabel/")
@@ -129,7 +121,6 @@ def psw():
     else:
         mess._show(title='Wrong Password', message='You have entered wrong password')
 
-######################################################################################
 
 def clear():
     txt.delete(0, 'end')
@@ -142,7 +133,6 @@ def clear2():
     res = "1)Take Images  >>>  2)Save Profile"
     message1.configure(text=res)
 
-#######################################################################################
 
 def TakeImages():
     check_haarcascadefile()
@@ -204,7 +194,6 @@ def TakeImages():
             res = "Enter Correct name"
             message.configure(text=res)
 
-########################################################################################
 
 def TrainImages():
     check_haarcascadefile()
@@ -223,7 +212,6 @@ def TrainImages():
     message1.configure(text=res)
     message.configure(text='Total Registrations till now  : ' + str(ID[0]))
 
-############################################################################################3
 
 def getImagesAndLabels(path):
     # get the path of all the files in the folder
@@ -245,7 +233,6 @@ def getImagesAndLabels(path):
         Ids.append(ID)
     return faces, Ids
 
-###########################################################################################
 
 def TrackImages():
     check_haarcascadefile()
@@ -329,8 +316,9 @@ def TrackImages():
     cam.release()
     cv2.destroyAllWindows()
 
-######################################## USED STUFFS ############################################
-    
+# USED_STUFF
+
+
 global key
 key = ''
 
@@ -352,7 +340,7 @@ mont={'01':'January',
       '12':'December'
       }
 
-######################################## GUI FRONT-END ###########################################
+# GUI_FRONT-END
 
 window = tk.Tk()
 window.geometry("1280x720")
@@ -422,7 +410,7 @@ else:
     res = 0
 message.configure(text='Total Registrations till now  : '+str(res))
 
-##################### MENUBAR #################################
+# MENUBAR
 
 menubar = tk.Menu(window,relief='ridge')
 filemenu = tk.Menu(menubar,tearoff=0)
@@ -431,7 +419,7 @@ filemenu.add_command(label='Contact Us', command = contact)
 filemenu.add_command(label='Exit',command = window.destroy)
 menubar.add_cascade(label='Help',font=('times', 29, ' bold '),menu=filemenu)
 
-################## TREEVIEW ATTENDANCE TABLE ####################
+# TREEVIEW ATTENDANCE TABLE
 
 tv= ttk.Treeview(frame1,height =13,columns = ('name','date','time'))
 tv.column('#0',width=82)
@@ -444,18 +432,18 @@ tv.heading('name',text ='NAME')
 tv.heading('date',text ='DATE')
 tv.heading('time',text ='TIME')
 
-###################### SCROLLBAR ################################
+# SCROLLBAR
 
 scroll=ttk.Scrollbar(frame1,orient='vertical',command=tv.yview)
 scroll.grid(row=2,column=4,padx=(0,100),pady=(150,0),sticky='ns')
 tv.configure(yscrollcommand=scroll.set)
 
-###################### BUTTONS ##################################
+# BUTTONS
 
 clearButton = tk.Button(frame2, text="Clear", command=clear  ,fg="black"  ,bg="#ea2a2a"  ,width=11 ,activebackground = "white" ,font=('times', 11, ' bold '))
 clearButton.place(x=335, y=86)
 clearButton2 = tk.Button(frame2, text="Clear", command=clear2  ,fg="black"  ,bg="#ea2a2a"  ,width=11 , activebackground = "white" ,font=('times', 11, ' bold '))
-clearButton2.place(x=335, y=172)    
+clearButton2.place(x=335, y=172)
 takeImg = tk.Button(frame2, text="Take Images", command=TakeImages  ,fg="white"  ,bg="blue"  ,width=34  ,height=1, activebackground = "white" ,font=('times', 15, ' bold '))
 takeImg.place(x=30, y=300)
 trainImg = tk.Button(frame2, text="Save Profile", command=psw ,fg="white"  ,bg="blue"  ,width=34  ,height=1, activebackground = "white" ,font=('times', 15, ' bold '))
@@ -465,9 +453,6 @@ trackImg.place(x=30,y=50)
 quitWindow = tk.Button(frame1, text="Quit", command=window.destroy  ,fg="black"  ,bg="red"  ,width=35 ,height=1, activebackground = "white" ,font=('times', 15, ' bold '))
 quitWindow.place(x=30, y=450)
 
-##################### END ######################################
 
 window.configure(menu=menubar)
 window.mainloop()
-
-####################################################################################################
