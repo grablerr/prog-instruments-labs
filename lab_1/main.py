@@ -438,11 +438,11 @@ txt2.place(x=30, y=173)
 
 message1 = tk.Label(frame2, text="1)Take Images  >>>  2)Save Profile",
                     bg="#00aeff", fg="black", width=39, height=1,
-                    activebackground = "yellow", font=('times', 15, ' bold '))
+                    activebackground="yellow", font=('times', 15, ' bold '))
 message1.place(x=7, y=230)
 
 message = tk.Label(frame2, text="", bg="#00aeff", fg="black", width=39,
-                   height=1, activebackground = "yellow",
+                   height=1, activebackground="yellow",
                    font=('times', 16, ' bold '))
 message.place(x=7, y=450)
 
@@ -467,9 +467,9 @@ message.configure(text='Total Registrations till now  : '+str(res))
 
 menubar = tk.Menu(window, relief='ridge')
 filemenu = tk.Menu(menubar, tearoff=0)
-filemenu.add_command(label='Change Password', command = change_pass)
-filemenu.add_command(label='Contact Us', command = contact)
-filemenu.add_command(label='Exit', command = window.destroy)
+filemenu.add_command(label='Change Password', command=change_pass)
+filemenu.add_command(label='Contact Us', command=contact)
+filemenu.add_command(label='Exit', command=window.destroy)
 menubar.add_cascade(label='Help', font=('times', 29, ' bold '), menu=filemenu)
 
 # TREEVIEW ATTENDANCE TABLE
@@ -480,10 +480,10 @@ tv.column('name', width=130)
 tv.column('date', width=133)
 tv.column('time', width=133)
 tv.grid(row=2, column=0, padx=(0, 0), pady=(150, 0), columnspan=4)
-tv.heading('#0', text ='ID')
-tv.heading('name', text ='NAME')
-tv.heading('date', text ='DATE')
-tv.heading('time', text ='TIME')
+tv.heading('#0', text='ID')
+tv.heading('name', text='NAME')
+tv.heading('date', text='DATE')
+tv.heading('time', text='TIME')
 
 # SCROLLBAR
 
@@ -498,23 +498,23 @@ clearButton = tk.Button(frame2, text="Clear", command=clear, fg="black",
                         font=('times', 11, ' bold '))
 clearButton.place(x=335, y=86)
 clearButton2 = tk.Button(frame2, text="Clear", command=clear2, fg="black",
-                         bg="#ea2a2a", width=11, activebackground = "white",
+                         bg="#ea2a2a", width=11, activebackground="white",
                          font=('times', 11, ' bold '))
 clearButton2.place(x=335, y=172)
 takeImg = tk.Button(frame2, text="Take Images", command=TakeImages, fg="white",
-                    bg="blue", width=34, height=1, activebackground = "white",
+                    bg="blue", width=34, height=1, activebackground="white",
                     font=('times', 15, ' bold '))
 takeImg.place(x=30, y=300)
 trainImg = tk.Button(frame2, text="Save Profile", command=psw, fg="white",
-                     bg="blue", width=34, height=1, activebackground = "white",
+                     bg="blue", width=34, height=1, activebackground="white",
                      font=('times', 15, ' bold '))
 trainImg.place(x=30, y=380)
 trackImg = tk.Button(frame1, text="Take Attendance", command=TrackImages,
                      fg="black", bg="yellow", width=35, height=1,
-                     activebackground = "white", font=('times', 15, ' bold '))
+                     activebackground="white", font=('times', 15, ' bold '))
 trackImg.place(x=30,y=50)
 quitWindow = tk.Button(frame1, text="Quit", command=window.destroy, fg="black",
-                       bg="red", width=35, height=1, activebackground = "white"
+                       bg="red", width=35, height=1, activebackground="white"
                        , font=('times', 15, ' bold '))
 quitWindow.place(x=30, y=450)
 
