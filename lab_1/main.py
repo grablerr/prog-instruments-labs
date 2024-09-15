@@ -2,15 +2,15 @@ import csv
 import datetime
 import os
 import time
+import tkinter as tk
+import tkinter.simpledialog as tsd
+from tkinter import messagebox as mess, ttk
 
 import cv2
 import numpy as np
 import pandas as pd
 from PIL import Image
 
-import tkinter as tk
-import tkinter.simpledialog as tsd
-from tkinter import messagebox as mess, ttk
 
 
 def assure_path_exists(path):
