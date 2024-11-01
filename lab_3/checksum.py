@@ -42,7 +42,7 @@ def serialize_result(variant: int, checksum: str) -> None:
     :param checksum: контрольная сумма, вычисленная через calculate_checksum()
     """
     try:
-        with open(JSON_PATH, 'w', encoding='utf-16') as file:
+        with open(JSON_PATH, 'w', encoding='utf-8') as file:
             result = {
                 "variant": VAR,
                 "checksum": checksum
