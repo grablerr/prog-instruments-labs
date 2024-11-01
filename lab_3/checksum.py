@@ -1,25 +1,13 @@
 import json
 import hashlib
+import csv
+from constants import VAR, CSV_PATH, JSON_PATH, REGULARS
 from typing import List
 
 """
 В этом модуле обитают функции, необходимые для автоматизированной проверки результатов ваших трудов.
 """
-var = 6
-csv_path = f"lab_3\\{var}.csv"
-json_path = "lab_3\\result.json"
-regulars = {
-    "telephone": r"^\+7-\([0-9]{3}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}+$",
-    "http_status_message": r"^\d{3}( [a-zA-Z]+)+$",
-    "inn": r"^\d{12}$",
-    "identifier": r"^\d{2}-\d{2}\/\d{2}$",
-    "ip_v4": r"/^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}$",
-    "latitude": r"^[+-]?(90\.0+|[0-8]?\d\.\d+)$",
-    "blood_type": r"^(A|B|AB|O)(\+|\u2212)$",
-    "isbn": r"^(\d{3}-)?\d{1}-\d{5}-\d{3}-\d{1}$",
-    "uuid": r"^[a-z0-9]{8}-([a-f0-9]{4}-){3}[a-z0-9]{12}$",
-    "date": r"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$"
-}
+
 
 def calculate_checksum(row_numbers: List[int]) -> str:
     """
@@ -53,6 +41,18 @@ def serialize_result(variant: int, checksum: str) -> None:
     :param checksum: контрольная сумма, вычисленная через calculate_checksum()
     """
     pass
+
+
+def read_csv(file_path: str):
+    data = []
+    try:
+        with open(file_path, mode='r', encoding='utf-16') as file:
+            reader = csv.DictReader(file, delimiter=';')
+            for row in reader:
+                data.append(row)
+        return data
+    except Exception as exc:
+        print(f"Reading .csv error: {exc}\n")
 
 
 if __name__ == "__main__":
