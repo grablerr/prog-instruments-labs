@@ -82,7 +82,7 @@ def validate_data(data, regulars):
 def get_invalid_rows(data, regulars):
     try:
         validated_data = validate_data(data, regulars)
-        invalid_rows = [index + 2 for index, is_valid in enumerate(
+        invalid_rows = [index for index, is_valid in enumerate(
             validated_data) if not is_valid]
         return invalid_rows
     except Exception as exc:
