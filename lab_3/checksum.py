@@ -1,6 +1,7 @@
 import json
 import hashlib
 import csv
+import re
 from constants import VAR, CSV_PATH, JSON_PATH, REGULARS
 from typing import List
 
@@ -53,6 +54,35 @@ def read_csv(file_path: str):
         return data
     except Exception as exc:
         print(f"Reading .csv error: {exc}\n")
+
+
+def validate_data(data, regulars):
+    try:
+        validated_data = []
+        for row in data:
+            is_valid = True
+            for key, pattern in regulars.items():
+                if key in row and not re.match(pattern, row[key]):
+                    is_valid = False
+                    break
+            validated_data.append(is_valid)
+        return validated_data
+    except Exception as exc:
+        print(f"Error in data validating: {exc}\n")
+
+
+def get_invalid_rows(data, regulars):
+    try:
+        validated_data = validate_data(data, regulars)
+        invalid_rows = [index + 2 for index, is_valid in enumerate(
+            validated_data) if not is_valid]
+        return invalid_rows
+    except Exception as exc:
+        print(f"Error in getting invalid rows: {exc}\n")
+
+
+print(get_invalid_rows(read_csv(CSV_PATH), REGULARS))
+print(len(get_invalid_rows(read_csv(CSV_PATH), REGULARS)))
 
 
 if __name__ == "__main__":
