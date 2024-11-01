@@ -1,6 +1,6 @@
 VAR = "6"
 CSV_PATH = f"prog-instruments-labs\\lab_3\\{VAR}.csv"
-JSON_PATH = "prog-instruments-labs\\result.json"
+JSON_PATH = "prog-instruments-labs\\lab_3\\result.json"
 REGULARS = {
     "telephone": r"^\+7-\([0-9]{3}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}+$",
     "http_status_message": r"^\d{3}( [a-zA-Z]+)+$",

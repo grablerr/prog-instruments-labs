@@ -41,7 +41,15 @@ def serialize_result(variant: int, checksum: str) -> None:
     :param variant: номер вашего варианта
     :param checksum: контрольная сумма, вычисленная через calculate_checksum()
     """
-    pass
+    try:
+        with open(JSON_PATH, 'w', encoding='utf-16') as file:
+            result = {
+                "variant": VAR,
+                "checksum": checksum
+            }
+            file.write(json.dumps(result))
+    except Exception as exc:
+        print(f"Serializing error: {exc}\n")
 
 
 def read_csv(file_path: str):
@@ -81,10 +89,8 @@ def get_invalid_rows(data, regulars):
         print(f"Error in getting invalid rows: {exc}\n")
 
 
-print(get_invalid_rows(read_csv(CSV_PATH), REGULARS))
-print(len(get_invalid_rows(read_csv(CSV_PATH), REGULARS)))
-
-
 if __name__ == "__main__":
-    print(calculate_checksum([1, 2, 3]))
-    print(calculate_checksum([3, 2, 1]))
+    data = read_csv(CSV_PATH)
+    invalid_indeces = get_invalid_rows(data, REGULARS)
+    checksum = calculate_checksum(invalid_indeces)
+    serialize_result(VAR, checksum)
